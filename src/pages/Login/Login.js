@@ -14,7 +14,6 @@ const Login = () => {
   const saveUserPw = event => {
     setUserPw(event.target.value);
   };
-
   const login = () => {
     fetch('/data/login.json', {
       //TODO: 백에서 API완료되면 API주소넣어주기
@@ -32,8 +31,8 @@ const Login = () => {
       })
       .then(data => {
         if (data.accessToken) {
-          alert('로그인성공'); //TODO navigate 넣어주기주소
           localStorage.setItem('accessToken', data.accessToken);
+          alert('로그인성공'); //TODO navigate 넣어주기주소
         } else {
           alert('로그인실패');
           setUserId('');
