@@ -27,7 +27,7 @@ const Post = () => {
         <div className="postList">
           {data.map(item => {
             return (
-              <div className="postConTens">
+              <div className="postConTens" key={item}>
                 <div>
                   <div className="proFileBox">
                     <div className="proFile">
