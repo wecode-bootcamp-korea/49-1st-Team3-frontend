@@ -55,7 +55,10 @@
       background-color: #2d71f7;
       border: none;
       margin-top: 16px;
-      cursor: pointer;
+      &:hover {
+        background-color: #083e7f;
+        cursor: pointer;
+      }
     }
     .loginOption {
       display: flex;
