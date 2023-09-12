@@ -1,0 +1,121 @@
+.postAdd {
+  display: flex;
+  width: 576px;
+  height: 844px;
+  padding: 10px 0px 40px 0px;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  margin: 0 auto;
+  margin-top: 7vh;
+
+  .label {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 15px;
+    font-family: Apple SD Gothic Neo;
+
+    .imgBox {
+      position: relative; // 부모 요소를 기준으로 자식 요소를 배치
+      width: 50px; // 이미지 컨테이너의 너비 설정
+      height: 50px; // 이미지 컨테이너의 높이 설정
+
+      .profileImg {
+        position: absolute; // 이미지를 절대 위치로 배치
+        top: 0; // 위에서부터의 거리
+        left: 0; // 왼쪽에서부터의 거리
+        z-index: 1; // 이미지의 겹치는 순서 (1이면 제일 위)
+
+        &.profileLine {
+          top: 20px; // 두 번째 이미지를 위로 이동
+          left: 20px; // 두 번째 이미지를 오른쪽으로 이동
+          z-index: 2; // 두 번째 이미지를 첫 번째 이미지 위에 배치
+        }
+      }
+    }
+    .nickName {
+      font-family: Apple SD Gothic Neo;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-left: 15px;
+      height: 5px;
+      margin-top: 5px;
+    }
+  }
+
+  .textContent {
+    display: flex;
+    padding: 15px 300px 600px 10px;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    margin-left: 80px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    color: #999;
+    font-family: Apple SD Gothic Neo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 10px;
+    resize: none;
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-top: 1px solid #e0e0e0;
+
+    .delete {
+      border-radius: 8px;
+      width: 24%;
+      height: 56px;
+      background-color: white;
+      font-family: Apple SD Gothic Neo;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      color: #2d71f7;
+      margin-top: 15px;
+      border: 1px solid #2d71f7;
+    }
+
+    .upload {
+      border-radius: 8px;
+      width: 24%;
+      height: 56px;
+      background-color: #2d71f7;
+      font-family: Apple SD Gothic Neo;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      color: white;
+      margin-top: 15px;
+      border: none;
+    }
+
+    .notupload {
+      border-radius: 8px;
+      width: 24%;
+      height: 56px;
+      background-color: grey;
+      font-family: Apple SD Gothic Neo;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      color: white;
+      margin-top: 15px;
+      border: none;
+    }
+  }
+}
