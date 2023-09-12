@@ -1,16 +1,16 @@
-import React from "react";
-import "./JoinDone.scss";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './JoinDone.scss';
+import { useNavigate } from 'react-router-dom';
 
 const JoinDone = () => {
   const navigate = useNavigate();
 
   const joinDoneBtn = () => {
-    navigate("/List");
+    navigate('/login');
   };
 
   const backBtn = () => {
-    navigate("/Main");
+    navigate('/main');
   };
 
   return (
@@ -30,6 +30,7 @@ const JoinDone = () => {
           </div>
         </div>
       </div>
+
       <input
         onClick={joinDoneBtn}
         type="button"

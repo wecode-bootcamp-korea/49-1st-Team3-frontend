@@ -1,14 +1,14 @@
-import React from "react";
-import "./PostAdd.scss";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './PostAdd.scss';
+import { useNavigate } from 'react-router-dom';
 
 const PostAdd = () => {
   const navigate = useNavigate();
   const deleteBtn = () => {
-    navigate("/PostList");
+    navigate('/PostList');
   };
   const uploadBtn = () => {
-    navigate("/PostList");
+    navigate('/PostList');
   };
 
   return (
