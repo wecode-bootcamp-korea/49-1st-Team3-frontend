@@ -7,13 +7,14 @@ const Login = () => {
   const [userPw, setUserPw] = useState('');
 
   // const navigate = useNavigate();
+  const saveUserPw = event => {
+    setUserPw(event.target.value);
+  };
 
   const saveUserId = event => {
     setUserId(event.target.value);
   };
-  const saveUserPw = event => {
-    setUserPw(event.target.value);
-  };
+
   const login = () => {
     fetch('/data/login.json', {
       //TODO: 백에서 API완료되면 API주소넣어주기
