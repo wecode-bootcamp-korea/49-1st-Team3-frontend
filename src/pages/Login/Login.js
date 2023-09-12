@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import "./Login.scss";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import './Login.scss';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [userId, setUserId] = useState("");
-  const [userPw, setUserPw] = useState("");
+  const [userId, setUserId] = useState('');
+  const [userPw, setUserPw] = useState('');
 
-  const saveUserId = (event) => {
+  const saveUserId = event => {
     setUserId(event.target.value);
   };
-  const saveUserPw = (event) => {
+  const saveUserPw = event => {
     setUserPw(event.target.value);
   };
   return (
@@ -33,13 +33,13 @@ const Login = () => {
           <input
             style={{
               backgroundColor:
-                userId.includes("@") && userPw.length >= 10 ? null : "gray",
+                userId.includes('@') && userPw.length >= 10 ? null : 'gray',
             }}
             className="loginButton"
             type="button"
             value="로그인"
             disabled={
-              userId.includes("@") && userPw.length >= 10 ? false : true
+              userId.includes('@') && userPw.length >= 10 ? false : true
             }
           />
 
