@@ -1,0 +1,23 @@
+[
+  {
+    "postId": 1,
+    "nickname": "이주은",
+    "profileImage": "https://~~~~~",
+    "content": "일라이자 효과는 인간의 사고 과정과 감정을....",
+    "createdAt": "2023-08-16T~~~~"
+  },
+  {
+    "postId": 2,
+    "nickname": "김기영",
+    "profileImage": "https://~~~~~2",
+    "content": "저는 두번째에요.",
+    "createdAt": "2023-08-20T~~~~"
+  },
+  {
+    "postId": 3,
+    "nickname": "이청원",
+    "profileImage": "https://~~~~~3",
+    "content": "저는 코딩을.....",
+    "createdAt": "2023-08-22T~~~~"
+  }
+]

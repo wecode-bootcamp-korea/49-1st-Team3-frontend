@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Link, useState } from 'react';
 import './Main.scss';
 
 const Main = () => {
@@ -28,19 +28,26 @@ const Main = () => {
 
   const onChangePasswordCheck = e => {
     setPasswordCheck(e.target.value);
-    if (password !== passwordCheck) {
-      return alert('비밀번호가 일치하지 않습니다.');
-    }
   };
 
   const onChangeNick = e => {
     setNick(e.target.value);
   };
+
+  const handleSumit = () => {
+    if (password !== passwordCheck) {
+      alert('비밀번호와 비밀번호 확인이 일치하지않습니다.');
+    } else {
+      alert('비밀번호가 일치합니다.');
+    }
+  };
   return (
     <div className="joinInfo">
       <div className="header">
-        <img src="./img/backArrow.png" alt="사진없음" />
-        <span className="backFont">뒤로</span>
+        <Link to="/">
+          <img src="./img/backArrow.png" alt="사진없음" />
+          <span className="backFont">뒤로</span>
+        </Link>
       </div>
       <div className="container">
         <div className="pageTitle">
@@ -108,7 +115,7 @@ const Main = () => {
         </div>
       </div>
       <div>
-        <button className="joinBtn">회원가입</button>
+        <button className="joinBtn" onClick={handleSumit}>회원가입</button>
       </div>
     </div>
   );
