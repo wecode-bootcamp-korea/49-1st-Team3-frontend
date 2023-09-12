@@ -6,10 +6,10 @@ const Login = () => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
 
-  const saveUserId = event => {
+  const saveUserId = (event) => {
     setUserId(event.target.value);
   };
-  const saveUserPw = event => {
+  const saveUserPw = (event) => {
     setUserPw(event.target.value);
   };
   const login = () => {
