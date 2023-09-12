@@ -8,7 +8,7 @@ const Post = () => {
   const navigate = useNavigate();
 
   const headersClick = () => {
-    navigate('/main');
+    navigate('/postadd');
   };
 
   useEffect(() => {

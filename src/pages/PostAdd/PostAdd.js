@@ -8,7 +8,7 @@ const PostAdd = () => {
   const navigate = useNavigate();
 
   const deleteBtn = () => {
-    navigate('/PostList');
+    navigate('/post');
   };
 
   const isInputValue = post.length === 0;
@@ -26,7 +26,7 @@ const PostAdd = () => {
     //   .then(res => res.json())
     //   .then(data => console.log(data));
 
-    navigate('/PostList');
+    navigate('/post');
   };
 
   const savePost = event => {
