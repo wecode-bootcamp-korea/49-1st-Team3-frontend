@@ -40,6 +40,12 @@ const Main = () => {
   };
 
   const handleSubmit = () => {
+    // email.includes('@') &&
+    // email.includes('.') &&
+    // pw.length <= 10
+
+    const conditionA = email.includes('@') && email.includes('.');
+
     fetch('API주소', {
       method: 'POST',
       headers: {
@@ -61,6 +67,8 @@ const Main = () => {
           alert('비밀번호가 일치하지 않습니다.');
         } else if (!email.includes('@') || !email.includes('.')) {
           alert('형식에 맞춰 기입해주세요.');
+        } else if (!conditionA || pw.length <= 10) {
+          alert('ID, PW 재확인이 필요합니다');
         } else if (pw === pwCheck) {
           alert('가입완료!');
           navigate('/joindone');
