@@ -9,6 +9,10 @@
   margin: 0 auto;
   margin-top: 7vh;
 
+  // .container {
+  //   width: 576px;
+  //   height: 844px;
+
   .label {
     display: flex;
     margin-top: 20px;
@@ -47,11 +51,10 @@
 
   .textContent {
     display: flex;
-    padding: 15px 300px 600px 10px;
+    padding: 15px 50px 600px 10px;
+    width: 470px;
     flex-direction: column;
     align-items: center;
-    flex: 1 0 0;
-    align-self: stretch;
     margin-left: 80px;
     border-radius: 6px;
     border: 1px solid #e0e0e0;
