@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import './Login.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import Input from '../../components/Input/Input';
 
 const Login = () => {
-  const [userId, setUserId] = useState('');
-  const [userPw, setUserPw] = useState('');
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = userInfo;
+
+  const saveUserInfo = event => {
+    const { name, value } = event.target;
+
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  let regex = new RegExp(
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+  );
+
+  const isActiveBtn = regex.test(email) && password.length >= 10;
 
   // const navigate = useNavigate();
-  const saveUserPw = event => {
-    setUserPw(event.target.value);
-  };
-
-  const saveUserId = event => {
-    setUserId(event.target.value);
-  };
 
   const login = () => {
     fetch('/data/login.json', {
@@ -23,8 +32,8 @@ const Login = () => {
         'Content-Type': 'application/json;charset=utf-8',
       },
       // body: JSON.stringify({   // TODO: 백에서 로그인 기능완료되면 주석 해제하기
-      //   email: userId,
-      //   password: userPw,
+      //   email: email,
+      //   password: password,
       // }),
     })
       .then(res => {
@@ -36,8 +45,7 @@ const Login = () => {
           alert('로그인성공'); //TODO navigate 넣어주기주소
         } else {
           alert('로그인실패');
-          setUserId('');
-          setUserPw('');
+          setUserInfo('');
         }
       });
   };
@@ -52,31 +60,27 @@ const Login = () => {
 
         <div className="allJoinBox">
           <div className="idPW">
-            <input
-              type="text"
+            <Input
+              scale="large"
               placeholder="이메일"
-              value={userId}
-              onChange={saveUserId}
+              type="email"
+              name="email"
+              onChange={saveUserInfo}
             />
-            <input
-              type="password"
+            <Input
+              scale="large"
               placeholder="비밀번호"
-              value={userPw}
-              onChange={saveUserPw}
+              type="password"
+              name="password"
+              onChange={saveUserInfo}
             />
           </div>
 
           <input
-            style={{
-              backgroundColor:
-                userId.includes('@') && userPw.length >= 10 ? null : 'gray',
-            }}
             className="loginButton"
             type="button"
             value="로그인"
-            disabled={
-              userId.includes('@') && userPw.length >= 10 ? false : true
-            }
+            disabled={isActiveBtn ? false : true}
             onClick={login}
           />
 
