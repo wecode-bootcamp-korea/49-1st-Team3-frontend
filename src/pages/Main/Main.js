@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Main.scss';
 
 const Main = () => {
-  // const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
+  const [pw, setPw] = useState('');
+  const [pwCheck, setPwCheck] = useState('');
   const [nick, setNick] = useState('');
+
   const [isCheckEmail, setIsCheckEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
-  const [isSubmit, setIsSubmitEnabled] = useState(false);
+  // const [isSubmit, setIsSubmitEnabled] = useState(false);
 
   const onChangeEmail = e => {
     const checkEmail = e.target.value;
@@ -19,33 +19,38 @@ const Main = () => {
     setIsCheckEmail(isValid);
   };
 
-  const onChangePassword = e => {
-    const checkPassword = e.target.value;
-    setPassword(checkPassword);
-    const isValid = checkPassword.length >= 10;
+  const onChangePw = e => {
+    const checkPw = e.target.value;
+    setPw(checkPw);
+    const isValid = checkPw.length >= 10;
     setIsPassword(isValid);
   };
 
-  const onChangePasswordCheck = e => {
-    setPasswordCheck(e.target.value);
+  const onChangePwCheck = e => {
+    setPwCheck(e.target.value);
   };
 
   const onChangeNick = e => {
     setNick(e.target.value);
   };
 
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate('/');
+  };
+
   const handleSubmit = () => {
-    if (password !== passwordCheck) {
+    if (pw !== pwCheck) {
       alert('비밀번호가 일치하지 않습니다.');
-    } else {
-      alert('비밀번호가 일치합니다.');
-      // navigate('/');
+    } else if (pw === pwCheck) {
+      alert('회원가입성공!');
+      navigate('/joindone');
     }
   };
   return (
     <div className="joinInfo">
       <div className="header">
-        <img src="./img/backArrow.png" alt="사진없음" />
+        <img src="./img/backArrow.png" alt="사진없음" onClick={goBack} />
         <span className="backFont">뒤로</span>
       </div>
       <div className="container">
@@ -59,20 +64,20 @@ const Main = () => {
           </label>
           <input type="email" placeholder="이메일" onChange={onChangeEmail} />
           {!isCheckEmail && (
-            <p style={{ color: 'red' }}>유효하지않은 이메일 주소입니다.</p>
+            <span style={{ color: 'red' }}>
+              유효하지않은 이메일 주소입니다.
+            </span>
           )}
-          <input
-            type="password"
-            placeholder="비밀번호"
-            onChange={onChangePassword}
-          />
+          <input type="password" placeholder="비밀번호" onChange={onChangePw} />
           {!isPassword && (
-            <p style={{ color: 'red' }}>비밀번호는 10자 이상이어야 합니다.</p>
+            <span style={{ color: 'red' }}>
+              비밀번호는 10자 이상이어야 합니다.
+            </span>
           )}
           <input
             type="password"
             placeholder="비밀번호 확인"
-            onChange={onChangePasswordCheck}
+            onChange={onChangePwCheck}
           />
         </div>
         <div className="nick">
