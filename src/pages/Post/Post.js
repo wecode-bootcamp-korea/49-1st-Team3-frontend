@@ -12,12 +12,12 @@ const Post = () => {
   };
 
   useEffect(() => {
-    fetch('/data/board.json')
+    fetch('http://10.58.52.59:8001/postList')
       .then(res => {
         return res.json();
       })
-      .then(data => {
-        setData(data);
+      .then(result => {
+        setData(result.GET_READ);
       });
   }, []);
 
@@ -31,7 +31,7 @@ const Post = () => {
                 <div>
                   <div className="proFileBox">
                     <div className="proFile">
-                      <img src={item.profileImage} alt="프로필사진" />
+                      <img src={`/img/${item.profileImage}`} alt="프로필사진" />
                       <span className="name">{item.nickname}</span>
                     </div>
                     <span className="date">{item.createdAt}</span>

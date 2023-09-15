@@ -22,10 +22,10 @@ const Login = () => {
 
   const isActiveBtn = regex.test(email) && password.length >= 10;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const login = () => {
-    fetch('http://localhost:8000/logIn', {
+    fetch('http://10.58.52.59:8001/logIn', {
       //TODO: 백에서 API완료되면 API주소넣어주기
       method: 'POST',
       headers: {
@@ -40,9 +40,13 @@ const Login = () => {
       .then(res => {
         return res.json();
       })
-
       .then(data => {
-        console.log(data);
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          navigate('/post');
+        } else {
+          setUserInfo('');
+        }
       });
   };
 
