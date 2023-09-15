@@ -16,18 +16,17 @@ const PostAdd = () => {
         navigate('/post');
       }
     } else {
-      navigate('/post');
     }
   };
 
-  const isInputValue = post.length === 0;
+  const saveInputValue = post.length === 0;
 
   const uploadBtn = () => {
     fetch('http://10.58.52.59:8001/postCreation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // Authorization: 'Bearer my-token',
+        // Authorization: 'token',
       },
       body: JSON.stringify({
         user_id: 6,
@@ -70,7 +69,7 @@ const PostAdd = () => {
           value="취소"
         />
         <input
-          className={isInputValue ? 'notupload' : 'upload'}
+          className={saveInputValue ? 'notupload' : 'upload'}
           disabled={post.length < 1}
           onClick={uploadBtn}
           type="button"
