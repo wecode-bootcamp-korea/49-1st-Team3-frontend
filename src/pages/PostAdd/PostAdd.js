@@ -13,7 +13,7 @@ const PostAdd = () => {
         '작성한 글이 모두 삭제됩니다. 취소하시겠습니까?',
       );
       if (isConfirmed) {
-        navigate('/post'); // (/post) 말고도 (-1)하면 이전페이지로 이동
+        navigate('/post');
       }
     } else {
       navigate('/post');
@@ -23,18 +23,19 @@ const PostAdd = () => {
   const isInputValue = post.length === 0;
 
   const uploadBtn = () => {
-    // fetch('http://10.58.52.145:3000/login', { //TODO: 백에서 API완료되면 API주소넣어주기
-    //   method: 'POST,
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //      Authorization: "Bearer my-token",  // TODO: 백에서 로그인 기능완료되면 주석 해제하기
-    //   },
-    //   body: JSON.stringify({
-    //     content: {post},
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => setPost(data.content));
+    fetch('http://10.58.52.59:8001/postCreation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // Authorization: 'Bearer my-token',
+      },
+      body: JSON.stringify({
+        user_id: 6,
+        content: post,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
 
     navigate('/post');
   };
