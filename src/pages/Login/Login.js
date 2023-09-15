@@ -22,29 +22,29 @@ const Login = () => {
 
   const isActiveBtn = regex.test(email) && password.length >= 10;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const login = () => {
-    fetch('/data/login.json', {
+    fetch('http://10.58.52.59:8001/logIn', {
       //TODO: 백에서 API완료되면 API주소넣어주기
-      method: 'GET', // TODO: 백에서 로그인 기능 롼료되면 'POST'로 바꿔주기
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      // body: JSON.stringify({   // TODO: 백에서 로그인 기능완료되면 주석 해제하기
-      //   email: email,
-      //   password: password,
-      // }),
+      body: JSON.stringify({
+        // TODO: 백에서 로그인 기능완료되면 주석 해제하기
+        email: email,
+        password: password,
+      }),
     })
       .then(res => {
         return res.json();
       })
       .then(data => {
-        if (data.accessToken) {
-          localStorage.setItem('accessToken', data.accessToken);
-          alert('로그인성공'); //TODO navigate 넣어주기주소
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          navigate('/post');
         } else {
-          alert('로그인실패');
           setUserInfo('');
         }
       });

@@ -30,12 +30,12 @@ const PostAdd = () => {
         // Authorization: 'Bearer my-token',
       },
       body: JSON.stringify({
-        user_id: 6,
+        user_id: 1,
         content: post,
       }),
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {});
 
     navigate('/post');
   };

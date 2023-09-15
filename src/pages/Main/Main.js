@@ -59,7 +59,7 @@ const Main = () => {
   // const conditionA = email.includes('@') && email.includes('.');
 
   const handleSubmit = () => {
-    fetch('http://10.58.52.70:8000/signUp', {
+    fetch('http://10.58.52.59:8001/signUp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -84,6 +84,7 @@ const Main = () => {
         //   navigate('/joindone');
         // }
         // console.log(result);
+        navigate('/joindone');
       });
   };
 
