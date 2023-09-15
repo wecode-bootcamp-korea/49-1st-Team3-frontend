@@ -25,24 +25,28 @@ const Login = () => {
   // const navigate = useNavigate();
 
   const login = () => {
-    fetch('http://localhost:8000/logIn', {
+    fetch('/data/login.json', {
       //TODO: 백에서 API완료되면 API주소넣어주기
-      method: 'POST',
+      method: 'GET', // TODO: 백에서 로그인 기능 롼료되면 'POST'로 바꿔주기
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        // TODO: 백에서 로그인 기능완료되면 주석 해제하기
-        email: email,
-        password: password,
-      }),
+      // body: JSON.stringify({   // TODO: 백에서 로그인 기능완료되면 주석 해제하기
+      //   email: email,
+      //   password: password,
+      // }),
     })
       .then(res => {
         return res.json();
       })
-
       .then(data => {
-        console.log(data);
+        if (data.accessToken) {
+          localStorage.setItem('accessToken', data.accessToken);
+          alert('로그인성공'); //TODO navigate 넣어주기주소
+        } else {
+          alert('로그인실패');
+          setUserInfo('');
+        }
       });
   };
 
