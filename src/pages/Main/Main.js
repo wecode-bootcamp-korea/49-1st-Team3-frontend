@@ -8,9 +8,26 @@ const Main = () => {
   const [pwCheck, setPwCheck] = useState('');
   const [nick, setNick] = useState('');
 
+  // const [userData, setUserData] = useState({
+  //   email: '',
+  //   pw: '',
+  //   pwCheck: '',
+  //   nick: '',
+  // });
+  // const { email, pw, pwCheck, nick } = userData;
+
+  // const userInfo = e => {
+  //   const { name, value } = e.target;
+  //   setUserData({ ...userData, [name]: value });
+  // };
+
   const [isCheckEmail, setIsCheckEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
-  // const [isSubmit, setIsSubmitEnabled] = useState(false);
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate('/');
+  };
 
   const onChangeEmail = e => {
     const checkEmail = e.target.value;
@@ -28,34 +45,29 @@ const Main = () => {
 
   const onChangePwCheck = e => {
     setPwCheck(e.target.value);
+    // const checkPwLength = pw.length > 9 && pwCheck.length > 9;
+    // const pwInput = pw !== pwCheck;
+    // if (checkPwLength === pwInput) {
+    //   alert('비밀번호가 일치하지 않습니다.');
+    // }
   };
 
   const onChangeNick = e => {
     setNick(e.target.value);
   };
 
-  const navigate = useNavigate();
-  const goBack = () => {
-    navigate('/');
-  };
+  // const conditionA = email.includes('@') && email.includes('.');
 
   const handleSubmit = () => {
-    // email.includes('@') &&
-    // email.includes('.') &&
-    // pw.length <= 10
-
-    const conditionA = email.includes('@') && email.includes('.');
-
-    fetch('API주소', {
+    fetch('http://10.58.52.70:8000/signUp', {
       method: 'POST',
       headers: {
-        // Content-Type: "application/json;charset=utf-8",
+        'Content-Type': 'application/json;charset=utf-8',
         // authoriztion: 'token'
       },
       body: JSON.stringify({
         email: email,
         password: pw,
-        passwordCheck: pwCheck,
         nickname: nick,
       }),
     })
@@ -63,16 +75,15 @@ const Main = () => {
         res.json();
       })
       .then(result => {
-        if (pw !== pwCheck) {
-          alert('비밀번호가 일치하지 않습니다.');
-        } else if (!email.includes('@') || !email.includes('.')) {
-          alert('형식에 맞춰 기입해주세요.');
-        } else if (!conditionA || pw.length <= 10) {
-          alert('ID, PW 재확인이 필요합니다');
-        } else if (pw === pwCheck) {
-          alert('가입완료!');
-          navigate('/joindone');
-        }
+        // } else if (!email.includes('@') || !email.includes('.')) {
+        //   alert('형식에 맞춰 기입해주세요.');
+        // } else if (!conditionA || pw.length < 10) {
+        //   alert('ID, PW 재확인이 필요합니다');
+        // } else if (pw === pwCheck) {
+        //   alert('가입완료!');
+        //   navigate('/joindone');
+        // }
+        // console.log(result);
       });
   };
 
